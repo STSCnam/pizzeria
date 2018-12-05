@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css")
+        link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.5.0/css/all.css", integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU", crossorigin="anonymous")
+
+        script(src="/static/js/home.js")
+
+        title Pizzeria
+    body
+        .container
+            form.form(method="POST", action="/post/command")
+                .columns
+                    .column.is-4.field
+                        .field-label.is-normal
+                            label.label Commande
+
+                        .field-body
+                            .field
+                                p.control.has-icons-left.has-icons-right
+                                    input.input(type='number', name="numCde" value=nextCommand, disabled)
+                                    span.icon.is-small.is-left
+                                        i.fas.fa-ticket-alt
+                    .column.is-4.field
+                        .field-label.is-normal
+                            label.label Liste des livreurs
+
+                        .field-body
+                            .field
+                                .control.has-icons-left
+                                    .select.is-fullwidth
+                                        select(name="deliverer")
+                                            option(selected, disabled) Livreur
+                                            for del in deliverers
+                                                option(value=del.numLiv)=del.nomLiv
+                                    .icon.is-small.is-left
+                                        i.fas.fa-truck
+
+                    .column.is-4.field
+                        .field-label.is-normal
+                            label.label Choix du client
+
+                        .field-body
+                            .field
+                                .control.has-icons-left
+                                    .select.is-fullwidth
+                                        select(name="client")
+                                            option(selected, disabled) Client
+                                            for cli in clients
+                                                option(value=cli.numCli)=cli.nomCli
+                                    .icon.is-small.is-left
+                                        i.fas.fa-user
+                
+                .columns
+                    table.table.is-fullwidth
+                        thead
+                            tr
+                                th
+                                    abbr(title='Lost') Nom pizza
+                                th
+                                    abbr(title='Goals for') Nombre de personnes
+                                th
+                                    abbr(title='Goals against') Prix
+                                th
+                                    abbr(title='Goal difference') Quantité
+                        tbody
+                            for piz in pizzas
+                                tr
+                                    td=piz.nomPiz
+                                    td=piz.nbPers
+                                    td=piz.prix
+                                    td
+                                        .columns
+                                            .column.is-10.field
+                                                p.control
+                                                    input(type="range", name=piz.numPiz, min="0", max="5", value="0", meta-price=piz.prix, oninput="updatePrice(this)", onchange="updatePrice(this)")
+                
+                .control
+                    p.is-fullwidth.has-background-link.has-text-centered.has-text-white 0
+
+                br
+                
+                .control
+	                button(type="submit").button.is-primary.is-fullwidth Commander
+
