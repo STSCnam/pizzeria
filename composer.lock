@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "a91e58bed5ae77d5aef2401b2f761083",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Enginr/enginr.git",
-                "reference": "51e621e729cf7b41222c76c7d3dff04c52bc528f"
+                "reference": "935b3172481e822806581a05e7cfa5b9f854ebcc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Enginr/enginr/zipball/51e621e729cf7b41222c76c7d3dff04c52bc528f",
-                "reference": "51e621e729cf7b41222c76c7d3dff04c52bc528f",
+                "url": "https://api.github.com/repos/Enginr/enginr/zipball/935b3172481e822806581a05e7cfa5b9f854ebcc",
+                "reference": "935b3172481e822806581a05e7cfa5b9f854ebcc",
                 "shasum": ""
             },
             "require": {
@@ -40,7 +40,7 @@
                 "MIT"
             ],
             "description": "A lightweight PHP solution to creating easily PHP applications.",
-            "time": "2018-11-15T22:17:00+00:00"
+            "time": "2018-12-05T19:03:30+00:00"
         },
         {
             "name": "js-phpize/js-phpize",

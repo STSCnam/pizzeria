@@ -46,7 +46,6 @@ $router->post('/post/command', function($req, $res) use ($env) {
     }
 
     if ($success) {
-        System::log($numCde . ' : ' . $req->body->client . ' : ' . $req->body->deliverer);
         $commands->put($numCde, $req->body->client, $req->body->deliverer);
     }
 

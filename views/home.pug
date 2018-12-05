@@ -17,17 +17,17 @@ html(lang="en")
             form.form(method="POST", action="/post/command")
                 .columns
                     .column.is-4.field
-                        .field-label.is-normal
+                        .field-label.is-normal.has-text-left
                             label.label Commande
 
                         .field-body
                             .field
                                 p.control.has-icons-left.has-icons-right
-                                    input.input(type='number', name="numCde" value=nextCommand, disabled)
+                                    input.input(type='number', name="numCde", value=nextCommand, disabled)
                                     span.icon.is-small.is-left
                                         i.fas.fa-ticket-alt
                     .column.is-4.field
-                        .field-label.is-normal
+                        .field-label.is-normal.has-text-left
                             label.label Liste des livreurs
 
                         .field-body
@@ -42,7 +42,7 @@ html(lang="en")
                                         i.fas.fa-truck
 
                     .column.is-4.field
-                        .field-label.is-normal
+                        .field-label.is-normal.has-text-left
                             label.label Choix du client
 
                         .field-body
@@ -57,31 +57,37 @@ html(lang="en")
                                         i.fas.fa-user
                 
                 .columns
-                    table.table.is-fullwidth
-                        thead
-                            tr
-                                th
-                                    abbr(title='Lost') Nom pizza
-                                th
-                                    abbr(title='Goals for') Nombre de personnes
-                                th
-                                    abbr(title='Goals against') Prix
-                                th
-                                    abbr(title='Goal difference') Quantité
-                        tbody
-                            for piz in pizzas
+                    .column
+                        table.table.is-fullwidth
+                            thead
                                 tr
-                                    td=piz.nomPiz
-                                    td=piz.nbPers
-                                    td=piz.prix
-                                    td
-                                        .columns
-                                            .column.is-10.field
-                                                p.control
-                                                    input(type="range", name=piz.numPiz, min="0", max="5", value="0", meta-price=piz.prix, oninput="updatePrice(this)", onchange="updatePrice(this)")
+                                    th
+                                        abbr(title='Lost') Nom pizza
+                                    th
+                                        abbr(title='Goals for') Nombre de personnes
+                                    th
+                                        abbr(title='Goals against') Prix
+                                    th
+                                        abbr(title='Goal difference') Quantité
+                            tbody
+                                for piz in pizzas
+                                    tr
+                                        td=piz.nomPiz
+                                        td=piz.nbPers
+                                        td=piz.prix
+                                        td
+                                            .columns
+                                                .column.field
+                                                    .control
+                                                        input(type="range", name=piz.numPiz, min="0", max="5", value="0", meta-price=piz.prix, onchange="updatePrice(this)")
+                                                .column.field
+                                                    .control
+                                                        input(type="number", id=piz.numPiz, value="0", disabled)
                 
                 .control
-                    p.is-fullwidth.has-background-link.has-text-centered.has-text-white 0
+                    p#priceMonitor.is-fullwidth.has-background-link.has-text-centered.has-text-white
+                        span#price 0
+                        span#devise  €
 
                 br
                 

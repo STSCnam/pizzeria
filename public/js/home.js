@@ -1,10 +1,17 @@
 'use strict'
 
-// import {HTTP} from './lib/HTTP.js';
+let updatePrice = (slide) => {
+    let total = 0;
+    let ranges = document.querySelectorAll('input[type="range"]');
+    let priceMonitor = document.querySelector('#priceMonitor #price');
 
-var price = 0;
+    for (let range of ranges) {
+        total += range.value * parseInt(range.getAttribute('meta-price'));
+    }
 
-let updatePrice = (input) => {
-    price += input.getAttribute('meta-price');
-    console.log(price);
+    priceMonitor.textContent = total;
+
+    let rangeMonitor = document.querySelector('#' + slide.name);
+
+    rangeMonitor.value = slide.value;
 }
